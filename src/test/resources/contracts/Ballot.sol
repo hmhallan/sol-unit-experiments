@@ -18,7 +18,7 @@ contract Ballot {
         uint voteCount; // number of accumulated votes
     }
 
-    address public chairperson;
+    address chairperson;
 
     // This declares a state variable that
     // stores a `Voter` struct for each possible address.
@@ -28,7 +28,11 @@ contract Ballot {
     Proposal[] public proposals;
 
     /// Create a new ballot to choose one of `proposalNames`.
-    constructor(bytes32[] memory proposalNames) public {
+    constructor() public {
+        
+    }
+    
+    function init( bytes32[] memory proposalNames ) public {
         chairperson = msg.sender;
         voters[chairperson].weight = 1;
 
@@ -142,9 +146,40 @@ contract Ballot {
     // Calls winningProposal() function to get the index
     // of the winner contained in the proposals array and then
     // returns the name of the winner
-    function winnerName() public view
-            returns (bytes32 winnerName_)
-    {
+    function winnerName() public view returns (bytes32 winnerName_) {
         winnerName_ = proposals[winningProposal()].name;
     }
+    
+    function getChairPerson() public view returns (address) {
+	    return chairperson;
+	}
+    
+    function getProposalsCount() public view returns (uint) {
+	    return proposals.length;
+	}
+	
+	function getVoterWeight (address voter) public view returns (uint) {
+		return voters[voter].weight;
+  	}
+  	
+  	function getProposalName(uint index) public view returns (bytes32) {
+		require(index < proposals.length);
+		require(index >= 0);
+		return proposals[index].name;
+	}
+	
+	function getProposalVoteCount(uint index) public view returns (uint) {
+		require(index < proposals.length);
+		require(index >= 0);
+		return proposals[index].voteCount;
+  	}
+  	
+  	function createProposal (bytes32 proposalName) {
+		require(msg.sender == chairperson);
+		proposals.push(Proposal({
+			name: proposalName,
+			voteCount: 0
+		}));
+	
+	}
 }
