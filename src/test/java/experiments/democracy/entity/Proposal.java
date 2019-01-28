@@ -1,4 +1,4 @@
-package test.solidityunit.entity;
+package experiments.democracy.entity;
 
 import java.math.BigInteger;
 

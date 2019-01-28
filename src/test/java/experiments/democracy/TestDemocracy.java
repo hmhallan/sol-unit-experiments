@@ -1,4 +1,4 @@
-package test.solidityunit;
+package experiments.democracy;
 
 import org.junit.runner.RunWith;
 

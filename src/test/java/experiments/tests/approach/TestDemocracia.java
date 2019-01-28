@@ -1,4 +1,4 @@
-package test.solidityunit;
+package experiments.tests.approach;
 
 import java.math.BigInteger;
 import java.util.Date;
@@ -11,11 +11,11 @@ import org.web3j.crypto.Credentials;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
 
 import experiments.contracts.Democracy;
+import experiments.democracy.entity.Proposal;
+import experiments.democracy.factory.TestDemocracyFactory;
 import solidityunit.annotations.Account;
 import solidityunit.annotations.Contract;
 import solidityunit.runner.SolidityUnitRunner;
-import test.solidityunit.entity.Proposal;
-import test.solidityunit.factory.TestDemocracyFactory;
 
 @RunWith(SolidityUnitRunner.class)
 public class TestDemocracia {
@@ -64,6 +64,7 @@ public class TestDemocracia {
 														"Description of proposal number  " + i, 
 														new Date(), 
 														(100 * i) );
+			Thread.sleep(1000);
 			Assert.assertNotNull( receipt );
 		}
 		

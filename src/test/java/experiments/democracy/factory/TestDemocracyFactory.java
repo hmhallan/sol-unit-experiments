@@ -1,4 +1,4 @@
-package test.solidityunit.factory;
+package experiments.democracy.factory;
 
 import java.io.IOException;
 import java.math.BigInteger;
