@@ -1,11 +1,11 @@
-pragma solidity >=0.4.22 <0.6.0;
+pragma solidity ^0.4.22;
 
 contract SimpleAuction {
     // Parameters of the auction. Times are either
     // absolute unix timestamps (seconds since 1970-01-01)
     // or time periods in seconds.
     address public beneficiary;
-    uint public auctionEndTime;
+    uint public auctionEnd;
 
     // Current state of the auction.
     address public highestBidder;
@@ -14,11 +14,10 @@ contract SimpleAuction {
     // Allowed withdrawals of previous bids
     mapping(address => uint) pendingReturns;
 
-    // Set to true at the end, disallows any change.
-    // By default initialized to `false`.
+    // Set to true at the end, disallows any change
     bool ended;
 
-    // Events that will be emitted on changes.
+    // Events that will be fired on changes.
     event HighestBidIncreased(address bidder, uint amount);
     event AuctionEnded(address winner, uint amount);
 
@@ -35,7 +34,7 @@ contract SimpleAuction {
         address _beneficiary
     ) public {
         beneficiary = _beneficiary;
-        auctionEndTime = now + _biddingTime;
+        auctionEnd = now + _biddingTime;
     }
 
     /// Bid on the auction with the value sent
@@ -52,7 +51,7 @@ contract SimpleAuction {
         // Revert the call if the bidding
         // period is over.
         require(
-            now <= auctionEndTime,
+            now <= auctionEnd,
             "Auction already ended."
         );
 
@@ -111,7 +110,7 @@ contract SimpleAuction {
         // external contracts.
 
         // 1. Conditions
-        require(now >= auctionEndTime, "Auction not yet ended.");
+        require(now >= auctionEnd, "Auction not yet ended.");
         require(!ended, "auctionEnd has already been called.");
 
         // 2. Effects
