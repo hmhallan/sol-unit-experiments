@@ -13,11 +13,11 @@ import org.web3j.protocol.core.methods.response.TransactionReceipt;
 import experiments.contracts.Democracy;
 import experiments.democracy.entity.Proposal;
 import experiments.democracy.factory.TestDemocracyFactory;
-import solidityunit.annotations.Account;
-import solidityunit.annotations.Contract;
-import solidityunit.runner.SolidityUnitRunner;
+import solunit.annotations.Account;
+import solunit.annotations.Contract;
+import solunit.runner.SolUnitRunner;
 
-@RunWith(SolidityUnitRunner.class)
+@RunWith(SolUnitRunner.class)
 public class TestDemocracia {
 
 	@Contract

@@ -3,10 +3,10 @@ package experiments.democracy;
 import org.junit.runner.RunWith;
 
 import experiments.contracts.Democracy;
-import solidityunit.annotations.Contract;
-import solidityunit.runner.SolidityUnitRunner;
+import solunit.annotations.Contract;
+import solunit.runner.SolUnitRunner;
 
-@RunWith(SolidityUnitRunner.class)
+@RunWith(SolUnitRunner.class)
 public class TestDemocracy {
 
 	@Contract

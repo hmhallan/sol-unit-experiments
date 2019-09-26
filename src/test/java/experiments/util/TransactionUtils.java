@@ -15,8 +15,8 @@ import org.web3j.tx.Contract;
 import org.web3j.tx.gas.DefaultGasProvider;
 import org.web3j.utils.Numeric;
 
-import solidityunit.constants.Config;
-import solidityunit.internal.utilities.PropertiesReader;
+import solunit.constants.Config;
+import solunit.internal.utilities.PropertiesReader;
 
 public class TransactionUtils {
 

@@ -9,11 +9,11 @@ import org.junit.runner.RunWith;
 import org.web3j.crypto.Credentials;
 
 import experiments.contracts.MetaCoin;
-import solidityunit.annotations.Account;
-import solidityunit.annotations.Contract;
-import solidityunit.runner.SolidityUnitRunner;
+import solunit.annotations.Account;
+import solunit.annotations.Contract;
+import solunit.runner.SolUnitRunner;
 
-@RunWith(SolidityUnitRunner.class)
+@RunWith(SolUnitRunner.class)
 public class TestMetacoin {
 	
 	@Contract

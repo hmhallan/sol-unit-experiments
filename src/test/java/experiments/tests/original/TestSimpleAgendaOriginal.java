@@ -9,8 +9,8 @@ import org.junit.runner.RunWith;
 import org.web3j.tuples.generated.Tuple2;
 
 import experiments.contracts.SimpleAgenda;
-import solidityunit.annotations.Contract;
-import solidityunit.runner.SolidityUnitRunner;
+import solunit.annotations.Contract;
+import solunit.runner.SolUnitRunner;
 
 /**
     https://github.com/guisantos/Agenda-in-Solidity
@@ -19,7 +19,7 @@ import solidityunit.runner.SolidityUnitRunner;
  *
  */
 
-@RunWith(SolidityUnitRunner.class)
+@RunWith(SolUnitRunner.class)
 public class TestSimpleAgendaOriginal {
 
 	@Contract

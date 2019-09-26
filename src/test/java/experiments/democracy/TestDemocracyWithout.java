@@ -11,10 +11,10 @@ import org.web3j.utils.Convert;
 
 import experiments.contracts.Democracy;
 import experiments.util.TransactionUtils;
-import solidityunit.annotations.Account;
-import solidityunit.runner.SolidityUnitRunner;
+import solunit.annotations.Account;
+import solunit.runner.SolUnitRunner;
 
-@RunWith(SolidityUnitRunner.class)
+@RunWith(SolUnitRunner.class)
 public class TestDemocracyWithout {
 
 	private Web3j web3j;

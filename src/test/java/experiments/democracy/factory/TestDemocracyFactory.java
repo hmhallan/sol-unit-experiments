@@ -14,8 +14,8 @@ import org.web3j.protocol.http.HttpService;
 import org.web3j.tx.gas.DefaultGasProvider;
 
 import experiments.contracts.Democracy;
-import solidityunit.constants.Config;
-import solidityunit.internal.utilities.PropertiesReader;
+import solunit.constants.Config;
+import solunit.internal.utilities.PropertiesReader;
 
 public class TestDemocracyFactory {
 	

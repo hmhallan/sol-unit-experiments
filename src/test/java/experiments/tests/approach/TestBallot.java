@@ -16,9 +16,9 @@ import org.web3j.protocol.Web3j;
 import org.web3j.tx.gas.DefaultGasProvider;
 
 import experiments.contracts.Ballot;
-import solidityunit.annotations.Account;
-import solidityunit.annotations.Contract;
-import solidityunit.runner.SolidityUnitRunner;
+import solunit.annotations.Account;
+import solunit.annotations.Contract;
+import solunit.runner.SolUnitRunner;
 
 /**
  * 
@@ -28,7 +28,7 @@ import solidityunit.runner.SolidityUnitRunner;
  * @author hallan
  *
  */
-@RunWith(SolidityUnitRunner.class)
+@RunWith(SolUnitRunner.class)
 public class TestBallot {
 	
 	@Contract

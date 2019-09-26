@@ -14,13 +14,13 @@ import org.web3j.tx.gas.DefaultGasProvider;
 import org.web3j.utils.Convert;
 
 import experiments.contracts.Congress;
-import solidityunit.annotations.Account;
-import solidityunit.annotations.Contract;
-import solidityunit.constants.Config;
-import solidityunit.internal.utilities.PropertiesReader;
-import solidityunit.runner.SolidityUnitRunner;
+import solunit.annotations.Account;
+import solunit.annotations.Contract;
+import solunit.constants.Config;
+import solunit.internal.utilities.PropertiesReader;
+import solunit.runner.SolUnitRunner;
 
-@RunWith(SolidityUnitRunner.class)
+@RunWith(SolUnitRunner.class)
 public class TestCongress {
 
 	@Contract

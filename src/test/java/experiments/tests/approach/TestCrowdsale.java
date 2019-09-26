@@ -10,11 +10,11 @@ import org.web3j.utils.Convert;
 
 import experiments.contracts.Crowdsale;
 import experiments.util.TransactionUtils;
-import solidityunit.annotations.Account;
-import solidityunit.annotations.Contract;
-import solidityunit.runner.SolidityUnitRunner;
+import solunit.annotations.Account;
+import solunit.annotations.Contract;
+import solunit.runner.SolUnitRunner;
 
-@RunWith(SolidityUnitRunner.class)
+@RunWith(SolUnitRunner.class)
 public class TestCrowdsale {
 	
 	@Contract

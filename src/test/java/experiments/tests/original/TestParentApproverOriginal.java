@@ -16,11 +16,11 @@ import org.web3j.utils.Convert;
 
 import experiments.contracts.ParentApprover;
 import experiments.util.TransactionUtils;
-import solidityunit.annotations.Account;
-import solidityunit.annotations.Contract;
-import solidityunit.constants.Config;
-import solidityunit.internal.utilities.PropertiesReader;
-import solidityunit.runner.SolidityUnitRunner;
+import solunit.annotations.Account;
+import solunit.annotations.Contract;
+import solunit.constants.Config;
+import solunit.internal.utilities.PropertiesReader;
+import solunit.runner.SolUnitRunner;
 
 /**
  * https://github.com/tbohnen/solidity-test-examples/blob/master/test/parent-approve-transaction-tests.js
@@ -28,7 +28,7 @@ import solidityunit.runner.SolidityUnitRunner;
  * @author hallan
  *
  */
-@RunWith(SolidityUnitRunner.class)
+@RunWith(SolUnitRunner.class)
 public class TestParentApproverOriginal {
 	
 	@Contract
