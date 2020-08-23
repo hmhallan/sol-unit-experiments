@@ -1,4 +1,4 @@
-pragma solidity >=0.4.25 <0.7.0;
+pragma solidity ^0.4.16;
 
 contract Democracy {
 
@@ -23,7 +23,7 @@ contract Democracy {
     Proposal[] public proposals;
 
 
-    function createProposal(string memory title, string memory description, uint expirationDate, uint neededVotes) public {
+    function createProposal(string title, string description, uint expirationDate, uint neededVotes) public {
         
         Proposal memory p;
         p.title = title;
@@ -41,7 +41,7 @@ contract Democracy {
         return proposals.length;
     }
     
-    function getProposal( uint index ) public view returns (uint, string memory , string memory , address, uint, uint, uint, uint, uint) {
+    function getProposal( uint index ) public view returns (uint, string, string, address, uint, uint, uint, uint, uint) {
         if ( proposals.length >= index ) {
             Proposal storage p = proposals[index];
             return (index, p.title, p.description, p.creator, p.expirationDate, p.neededVotes, p.votesFavor.length, p.votesAgainst.length, p.status);
@@ -57,7 +57,7 @@ contract Democracy {
 		Proposal storage p = proposals[index];
 	
 		//valida a data do voto
-		require( now < p.expirationDate );
+		//require( now < p.expirationDate );
 		
 		//valida voto duplicado
 		//address votou = p.votosFavor.push[msg.sender] || p.votosContra.push[msg.sender];
@@ -74,6 +74,10 @@ contract Democracy {
 		
 	}  
 
-    
+    function kill() public { //encerra o contrato (somente o owner pode fazer isso)
+        if(msg.sender == owner) {
+            selfdestruct(owner); 
+        }
+    }
 
 }

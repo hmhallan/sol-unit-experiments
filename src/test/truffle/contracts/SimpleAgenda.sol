@@ -1,4 +1,4 @@
-pragma solidity >=0.4.25 <0.7.0;
+pragma solidity ^0.4.15;
 
 contract SimpleAgenda {
 
@@ -16,23 +16,23 @@ contract SimpleAgenda {
     
     mapping(bytes32 => Contact) private mapping_number;
     
-    function newContact (string memory _name, bytes32 _number, string memory  _email) public returns (bool) {
+    function newContact (string _name, bytes32 _number, string _email) public returns (bool) {
         if (!contactExist(_number)) {
-            Contact memory contato = Contact(_name, _number, _email, contactIndex.length);
+            var contato = Contact(_name, _number, _email, contactIndex.length);
         
             mapping_number[_number] = contato;
             contactIndex.push(_number);
         
-            emit AddNewContact(_name, _number, _email, contactIndex.length);
+            AddNewContact(_name, _number, _email, contactIndex.length);
         } else {
             revert();
         }
         
     }
     
-    function getContact (bytes32 _number) public view returns (string memory , string memory ) {
+    function getContact (bytes32 _number) public view returns (string, string) {
         if (contactExist(_number)) {
-            Contact memory contato = mapping_number[_number];
+            var contato = mapping_number[_number];
         
             return (contato.name, contato.email);
         } else {
@@ -44,9 +44,9 @@ contract SimpleAgenda {
         if (contactExist(_number)) {
             uint contactToDelete = mapping_number[_number].index;
             
-            emit DeleteContact(_number, contactToDelete);
+            DeleteContact(_number, contactToDelete);
             
-            bytes32 contactToMove = contactIndex[contactIndex.length - 1];
+            var contactToMove = contactIndex[contactIndex.length - 1];
             
             contactIndex[contactToDelete] = contactToMove;
             
@@ -59,15 +59,14 @@ contract SimpleAgenda {
     }
     
     function contactExist (bytes32 _number) public view returns (bool isContact) {
-        int nex = -1;
-        if (int(mapping_number[_number].index) != nex) 
-            return true;
-
-        //if (keccak256(contactIndex[mapping_number[_number].index]) == keccak256(_number)) {
+        if (contactIndex.length == 0) 
             return false;
-        //} else {
-        //    return false;
-        //}
+
+        if (keccak256(contactIndex[mapping_number[_number].index]) == keccak256(_number)) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
     function countContacts() public view returns (uint) {

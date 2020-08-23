@@ -174,7 +174,7 @@ contract Ballot {
 		return proposals[index].voteCount;
   	}
   	
-  	function createProposal (bytes32 proposalName) public {
+  	function createProposal (bytes32 proposalName) {
 		require(msg.sender == chairperson);
 		proposals.push(Proposal({
 			name: proposalName,

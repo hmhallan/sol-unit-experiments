@@ -2,6 +2,10 @@ const MetaCoin = artifacts.require("MetaCoin");
 
 contract('MetaCoin', (accounts) => {
 
+  beforeEach(async () => {
+    const metaCoinInstance = await MetaCoin.deployed();
+    metaCoinInstance.setInitialBalance();
+  });
 
   it('should have balance in main account', async () => {
     const metaCoinInstance = await MetaCoin.deployed();

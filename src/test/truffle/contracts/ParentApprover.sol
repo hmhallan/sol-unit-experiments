@@ -1,4 +1,4 @@
-pragma solidity >=0.4.25 <0.7.0;
+pragma solidity ^0.4.17;
 
 contract ParentApprover {
 
@@ -50,7 +50,7 @@ contract ParentApprover {
           executed: false
           });
     transactionCount+=1;
-    emit Submission(transactionId);
+    Submission(transactionId);
   }
 
 
@@ -60,8 +60,8 @@ contract ParentApprover {
     if (!txn.executed) {
       txn.executed = true;
 
-      //if (txn.destination.call.value(txn.value)(""))
-        emit Execution(transactionId);
+      if (txn.destination.call.value(txn.value)())
+        Execution(transactionId);
     }
   }
   
@@ -72,7 +72,7 @@ contract ParentApprover {
   }
   
   function getTransactionsToApprove() public view returns
-  				( uint[] memory  ) {
+  				( uint[] ) {
 	    uint[] memory ids = new uint[](transactionCount);
 		uint counter = 0;
 		for(uint i = 0; i < transactionCount; i++){
@@ -82,7 +82,7 @@ contract ParentApprover {
 		return ids;
   }
   
-  function () external  payable {
+  function () public payable {
     require(parent != 0x0000000000000000000000000000000000000000);
   }
 }
