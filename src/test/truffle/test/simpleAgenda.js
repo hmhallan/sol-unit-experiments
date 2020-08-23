@@ -34,13 +34,26 @@ contract('SimpleAgenda', (accounts) => {
         }
     }
     return utf8;
-}
+  }
+
+
+  function millisToMinutesAndSeconds(millis) {
+    var minutes = Math.floor(millis / 60000);
+    var seconds = ((millis % 60000) / 1000).toFixed(0);
+    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+  }
 
   beforeEach(async () => {
+    var inicio = new Date(); 
     contract_instance = await SimpleAgenda.new();
 
     await contract_instance.newContact("Teste", toUTF8Array("1234") , "teste@gmail.com");
     await contract_instance.newContact("Teste", toUTF8Array("5678") , "teste@gmail.com");
+
+    var fim = new Date(); 
+    var Difference_In_Time = fim.getTime() - inicio.getTime(); 
+    console.info("beforeEach: (" + Difference_In_Time + "ms)" );
+    console.info("beforeEach (min:seg): " + millisToMinutesAndSeconds(Difference_In_Time)  );
   });
 
   it('possible to add a new contact', async () => {

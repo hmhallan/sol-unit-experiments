@@ -2,6 +2,14 @@ const ParentApprover = artifacts.require("ParentApprover");
 
 contract('ParentApprover', (accounts) => {
 
+
+    
+  function millisToMinutesAndSeconds(millis) {
+    var minutes = Math.floor(millis / 60000);
+    var seconds = ((millis % 60000) / 1000).toFixed(0);
+    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+  }
+
   //instancia atual do contrato
   var contract_instance;
 
@@ -9,6 +17,7 @@ contract('ParentApprover', (accounts) => {
   const child = accounts[1];
 
   beforeEach(async () => {
+    var inicio = new Date(); 
     contract_instance = await ParentApprover.new();
 
     await contract_instance.setChild(child);
@@ -17,6 +26,10 @@ contract('ParentApprover', (accounts) => {
     const destinationAddress = accounts[3];
     await contract_instance.submitTransaction(destinationAddress, web3.utils.toWei('1', 'ether'));
 
+    var fim = new Date(); 
+    var Difference_In_Time = fim.getTime() - inicio.getTime(); 
+    console.info("beforeEach: (" + Difference_In_Time + "ms)" );
+    console.info("beforeEach (min:seg): " + millisToMinutesAndSeconds(Difference_In_Time)  );
   });
 
   it('Parent can approve transaction', async () => {

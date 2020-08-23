@@ -2,9 +2,24 @@ const MetaCoin = artifacts.require("MetaCoin");
 
 contract('MetaCoin', (accounts) => {
 
+
+    
+  function millisToMinutesAndSeconds(millis) {
+    var minutes = Math.floor(millis / 60000);
+    var seconds = ((millis % 60000) / 1000).toFixed(0);
+    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+  }
+
   beforeEach(async () => {
+    var inicio = new Date(); 
     const metaCoinInstance = await MetaCoin.deployed();
     metaCoinInstance.setInitialBalance();
+
+    
+    var fim = new Date(); 
+    var Difference_In_Time = fim.getTime() - inicio.getTime(); 
+    console.info("beforeEach: (" + Difference_In_Time + "ms)" );
+    console.info("beforeEach (min:seg): " + millisToMinutesAndSeconds(Difference_In_Time)  );
   });
 
   it('should have balance in main account', async () => {
